@@ -1,15 +1,19 @@
-type Movie {
-  id: Int!
-  name: String!
-  score: Int!
+type Album {
+  
+  
+  title: String!
+  
+  rating: Int!
+  review: String
+  
+  id: String!
+  idMusicBrainz: String!
+	urlRateYourMusic: String
+	
+	urlAlbumCover: String
 }
 
 type Query {
-  movies: [Movie]!
-  movie(id: Int!): Movie
-}
-
-type Mutation {
-  addMovie(score: Int!, name: String!): Movie!
-  deleteMovie(id: Int!): Boolean!
+  albums: [Album]!
+  album(id: Int!): Album
 }
