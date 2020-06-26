@@ -26,8 +26,8 @@ let albums = [
 		review: "",
 		
 		id: "1111",
-		idMusicBrainz: "cb76227e-3ac0-3002-9a10-615a5b73cc59",
-		urlRateYourMusic: "/album/my-bloody-valentine/loveless/",
+		idMbz: "cb76227e-3ac0-3002-9a10-615a5b73cc59",
+		urlRym: "/album/my-bloody-valentine/loveless/",
 		
 		urlAlbumCover: "http://coverartarchive.org/release/cd32c6cf-f979-39e7-a4ec-157d3a560d06/25797196285-500.jpg"
 	}
@@ -40,3 +40,10 @@ export const getById = id => {
   return filteredAlbums[0];
 };
 
+
+export const addAlbum = (urlRateYourMusic, rating) => {
+  
+  albums.push(newAlbum);
+  
+  return newAlbum;
+};
