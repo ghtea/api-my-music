@@ -29,7 +29,7 @@ let albums = [
 		idMusicBrainz: "cb76227e-3ac0-3002-9a10-615a5b73cc59",
 		urlRateYourMusic: "/album/my-bloody-valentine/loveless/",
 		
-		urlAlbumCover: "http://coverartarchive.org/release/cd32c6cf-f979-39e7-a4ec-157d3a560d06/25797196285-500.jpg",
+		urlAlbumCover: "http://coverartarchive.org/release/cd32c6cf-f979-39e7-a4ec-157d3a560d06/25797196285-500.jpg"
 	}
 ];
 
