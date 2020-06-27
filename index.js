@@ -3,7 +3,9 @@ import mongoose from 'mongoose';
 import dotenv from "dotenv"
 
 
-const getAlbumDataFromRym = require('./getAlbumDataFromRym.js');
+const getAlbumData = require('./getAlbumData.js');
+const getAlbumCover = require('./getAlbumCover.js');
+
 let Album = require('./mongodb/models/album');
 
 dotenv.config({ 
@@ -41,12 +43,13 @@ const resolvers = {
     addAlbum: async (_, {urlRym, rating, review}) => {
   
     	try {
-    		let newAlbumWorking =  await getAlbumDataFromRym(urlRym)
+    		let newAlbumWorking =  await getAlbumData(urlRym)
     		
+    		let id = urlRym.replace(/https:\/\/rateyourmusic.com\//, '').replace(/\/$/, '').replace(/\//g,'_')
     		
     		newAlbumWorking = {
     			...newAlbumWorking,
-    			_id: urlRym.replace(/https:\/\/rateyourmusic.com\//, "").replace(/$\/?/,''),
+    			_id: id,
     			urlRym: urlRym
     	  }
     	  
@@ -57,10 +60,14 @@ const resolvers = {
     	    newAlbumWorking["review"] = review;
     	  }
     	  
-    	  
+        
+        
+        const pathFile = `./storage/albumCovers/${newAlbumWorking["_id"]}.png`
+        await getAlbumCover(urlRym, pathFile)
+        
+        
         const album = new Album({...newAlbumWorking});
         await album.save();
-      
       	return album;
       
       } catch (error) {
