@@ -1,23 +1,26 @@
+
 type Album {
   
-  id: ID!
   urlRym: String!
-  idMbz: String
+  _id: ID!
   
   title: String!
+  artist: String!
+  year: String
   
-  rating: Int!
+  rating: Int
+  
   review: String
-  
 }
 
 
 type Query {
-  albums: [Album]!
-  album(id: ID!): Album
+  getAlbums: [Album]!
+  getAlbum(id: ID!): Album
 }
 
 
 type Mutation {
-  addAlbum(urlRym: String!, rating: Int): Movie!
+  addAlbum(urlRym: String!, rating: Int, review:String): Album!
+  deleteAlbum(id: ID!): String!
 }

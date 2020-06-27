@@ -11,9 +11,7 @@ const getHtml = async(urlRym) => {
 	}
 };
 
-module.exports = (urlRym) => {
-	getHtml(urlRym)
-	.then(html => {
+const parseHtml = (html) => {
 		
 		let album = {};
 		
@@ -38,14 +36,22 @@ module.exports = (urlRym) => {
 				album.tracks.push( $(this).find('span.tracklist_title span:nth-child(1)').text() )
 			})
 		*/
-		return album;
-	})
-	.then(album => {
-		console.log(album)
-		return album;
+		
+		return new Promise(function(resolve, reject) {
+    	if (album) {
+        resolve(album);
+      }
+      reject(new Error("failed in parsing"));
+  	});
 	}
-		);
-}
+
+
+
+
+module.exports = (urlRym) => 
+	getHtml(urlRym)
+	.then(parseHtml)
+
 
 
 /*
