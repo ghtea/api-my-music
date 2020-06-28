@@ -16,15 +16,21 @@ const parseHtml = (html) => {
 		let album = {};
 		
 		const $ = cheerio.load(html.data);
+		
+		const $shortcutAlbum = $("input.album_shortcut")[0];
+		
 		const $titleAlbum = $("div.page_section").children("div.album_title");
 		const $infoAlbum = $("table.album_info tbody").children("tr");
 
 		const $trackAlbum = $("div.section_tracklisting ul").children("li.track");
 		
 		album = {
-			title: $($titleAlbum[0]).text().replace(/\s\n[\s\S]*/,'')
+			_id: $($shortcutAlbum).attr('value').replace(/\[/,'').replace(/\]/,'')
+			
+			,title: $($titleAlbum[0]).text().replace(/\s\n[\s\S]*/,'')
 			,artist: $($infoAlbum[0]).find('a.artist').text()
 			,year: $($infoAlbum[2]).find('td a b').text()
+			
 			
 			//,tracks: []
 			//,trackFirst: $($trackAlbum).find('span.tracklist_title span:nth-child(1)').text()

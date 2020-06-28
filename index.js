@@ -45,11 +45,12 @@ const resolvers = {
     	try {
     		let newAlbumWorking =  await getAlbumData(urlRym)
     		
-    		let id = urlRym.replace(/https:\/\/rateyourmusic.com\//, '').replace(/\/$/, '').replace(/\//g,'_')
+    		//let id = urlRym.replace(/https:\/\/rateyourmusic.com\//, '').replace(/\/$/, '').replace(/\//g,'_')
+    		//let id = Date.now();
+    		// id 는 rateyourmusic의 shortcut 시스템을 사용하기로 했다.
     		
     		newAlbumWorking = {
     			...newAlbumWorking,
-    			_id: id,
     			urlRym: urlRym
     	  }
     	  
