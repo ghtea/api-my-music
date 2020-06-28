@@ -68,7 +68,7 @@ const resolvers = {
         
         const album = new Album({...newAlbumWorking});
         await album.save();
-      	return album;
+      	return "album added successfully!";
       
       } catch (error) {
       		console.error(error);

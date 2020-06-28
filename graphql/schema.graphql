@@ -21,6 +21,6 @@ type Query {
 
 
 type Mutation {
-  addAlbum(urlRym: String!, rating: Int, review:String): Album!
+  addAlbum(urlRym: String!, rating: Int, review:String): String
   deleteAlbum(id: ID!): String!
 }
